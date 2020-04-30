@@ -1,0 +1,91 @@
+<div class="content principal">
+    <br/>
+    <h2>
+        {{ tituloPagina }} 
+    </h2>
+    <br/>
+    <div class="box-body">
+        <form [formGroup]="frmRequerimento" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+                <label for="cep" class="control-label col-sm-2">CEP:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" maxlength="9" id="cep" formControlName="cep">
+                </div>
+
+                <label for="espaco" class="control-label col-sm-1"></label>
+                
+                <label for="fnCopiarSede" class="control-label col-sm-2">
+                    <button type="button" (click)="fnCopiarSede()" class="btn btn-primary butoesCopia">
+                        Copiar endereço da sede
+                    </button>
+                </label>
+
+                <label for="fnCopiarAtividade" class="control-label col-sm-2">
+                    <button type="button" (click)="fnCopiarAtividade()" class="btn btn-primary butoesCopia">
+                        Copiar endereço da atividade
+                    </button>
+                </label>
+
+                <label for="fnLimpar" class="control-label col-sm-2">
+                    <button type="button" (click)="fnLimpar()" class="btn btn-primary butoesCopia">
+                        Limpar
+                    </button>
+                </label>
+            </div>
+
+            <div class="form-group row">
+                <label for="logradouro" class="control-label col-sm-2">Logradouro:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" maxlength="80" id="logradouro" formControlName="logradouro">
+                </div>
+
+                <label for="numero" class="control-label col-sm-1">Número:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" maxlength="20" id="numero" formControlName="numero">
+                </div>
+
+                <label for="complemento" class="control-label col-sm-2">Complemento:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" maxlength="20" id="complemento" formControlName="complemento">
+                </div>
+
+                
+            </div>
+
+            
+            <div class="form-group row">
+                <label for="bairro" class="control-label col-sm-2">Bairro:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="bairro" maxlength="50" formControlName="bairro">
+                </div>
+
+                <label for="municipio" class="control-label col-sm-1"><span style="font-size:14px;">Município:</span>
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="municipio" maxlength="30" formControlName="municipio">
+                </div>
+
+                <label for="uf" class="control-label col-sm-1">UF:</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="uf" maxlength="2" formControlName="uf">
+                </div>       
+            </div>
+
+            <hr>
+
+            <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/endereco-empreendimento-atividade">Anterior</button>
+            <button type="submit" class="btn btn-primary botoesNav">{{btnLabel}}</button>
+            <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/representante-legal">Próximo</button>
+
+        </form>
+    </div>
+</div>

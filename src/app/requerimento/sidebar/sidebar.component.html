@@ -1,0 +1,102 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <div class="brand-link text-center">      
+      <h3>REQUERIMENTO</h3>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open brand-link">
+            <!-- <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Starter Pages
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a> -->
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/requerimento/dados-requerimento" 
+                [class.active]="urlPagina === '/requerimento/dados-requerimento'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Dados do Requerimento</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/dados-requerente" [class.active]="urlPagina === '/requerimento/dados-requerente'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Dados do Requerente / Sede</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/endereco-sede" [class.active]="urlPagina === '/requerimento/endereco-sede'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Endereço da Sede</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/endereco-empreendimento-atividade" [class.active]="urlPagina === '/requerimento/endereco-empreendimento-atividade'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Endereço do<br/> Empreendimento / Atividade</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/endereco-correspondencia" [class.active]="urlPagina === '/requerimento/endereco-correspondencia'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Endereço de Correspondência</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/representante-legal" [class.active]="urlPagina === '/requerimento/representante-legal'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Representante Legal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/contato" [class.active]="urlPagina === '/requerimento/contato'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Contato</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/responsavel-tecnico" [class.active]="urlPagina === '/requerimento/responsavel-tecnico'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Responsável Técnico</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/documentos" [class.active]="urlPagina === '/requerimento/documentos'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Documentos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/requerimento/finalizado" [class.active]="urlPagina === '/requerimento/finalizado'" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Finalização</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link icone-menu">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p>
+                Sair
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

@@ -1,0 +1,256 @@
+<div class="content principal">
+    <br/>
+    <h2>
+        {{ tituloPagina }} 
+    </h2>
+    <br/>
+    <div class="box-body">
+        <form [formGroup]="frmRequerimento" (ngSubmit)="onSubmit()">
+
+            <div class="form-group row">
+                <label for="docrequerente" class="control-label col-sm-2">CPF:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="docrequerente" formControlName="docrequerente">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nomerequerente" class="control-label col-sm-2">Nome:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nomerequerente" formControlName="nomerequerente">
+                </div>
+
+                <label for="nomefantasia" class="control-label col-sm-2">Nome fantasia:
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nomefantasia" formControlName="nomefantasia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ie" class="control-label col-sm-2">Insc. estadual:
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="ie" formControlName="ie">
+                </div>
+
+                <label for="numctf" class="control-label col-sm-2">Nº da Inscr. no CTF/CTE:
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="numctf" formControlName="numctf">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="carrequerente" class="control-label col-sm-2">Caracterização:
+                </label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="carrequerente" formControlName="carrequerente">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+
+                <label for="me" class="control-label col-sm-4">Microempresa ou empresa de pequeno porte?
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="me" formControlName="me">
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <label for="telefone" class="control-label col-sm-2">Telefone:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+
+                    <button type="button" data-toggle="modal" 
+                    data-target="#modalTelefone" class="btn btn-primary">
+                    Incluir Telefone
+
+                    <span class="paddNumero">
+                        {{arrTelefones.length}}
+                    </span>
+
+                    </button>
+                </div>
+
+                <label for="telefone" class="control-label col-sm-2">E-mail:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-2">
+
+                    <button type="button" data-toggle="modal" 
+                    data-target="#modalEmail" class="btn btn-primary">
+                    Incluir E-mail
+
+                    <span class="paddNumero">
+                        {{arrEmails.length}}
+                    </span>
+
+                    </button>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group row">
+                <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/dados-requerimento">Anterior</button>
+                <button type="submit" class="btn btn-primary botoesNav">{{btnLabel}}</button>
+                <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/endereco-sede">Próximo</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Incluir telefone</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="frmTelefone" (ngSubmit)="onSubmitTelefone()">
+            <div class="modal-body"> 
+                <div class="form-group row">
+                    <label for="tipo" class="control-label col-sm-2">Tipo:
+                        <span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="tipo" formControlName="tipo">
+                            <option value='' selected='selected'>Selecione</option>
+                            <option value="Celular Comercial">Celular Comercial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        DDD:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="ddd" maxlength="2" formControlName="ddd">
+                    </div>
+                    <label for="ddd" class="control-label col-sm-2">
+                        Número:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="numero" maxlength="20" formControlName="numero">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        Ramal:
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ramal" maxlength="20" formControlName="ramal">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success ">Adicionar</button>
+                </div>
+
+                <table class="table table-striped" *ngIf="arrTelefones.length > 0">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">DDD + Número</th>
+                        <th scope="col">Ramal</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arrTelefones; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.tipo}}</td>
+                            <td>{{item.ddd}} {{item.numero}}</td>
+                            <td>{{item.ramal}}</td>
+                            <td><button type="button" (click)="excluirTelefone(i)" class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </form>        
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalEmail" tabindex="-1" role="dialog" aria-labelledby="modalEmail" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Incluir E-mail</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="frmEmail" (ngSubmit)="onSubmitEmail()">
+            <div class="modal-body"> 
+                <div class="form-group row">
+                    <label for="tipo" class="control-label col-sm-2">Tipo:
+                        <span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="tipo" formControlName="tipo">
+                            <option value='' selected='selected'>Selecione</option>
+                            <option value="E-mail pessoal">E-mail pessoal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        E-mail:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" maxlength="20" formControlName="email">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success ">Adicionar</button>
+                </div>
+
+                <table class="table table-striped" *ngIf="arrEmails.length > 0">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arrEmails; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.tipo}}</td>
+                            <td>{{item.email}}</td>
+                            <td><button type="button" (click)="excluirEmail(i)" class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </form>        
+      </div>
+    </div>
+</div>

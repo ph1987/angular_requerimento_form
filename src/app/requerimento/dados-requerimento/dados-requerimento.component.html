@@ -1,0 +1,36 @@
+<div class="content principal">
+    <br/>
+    <h2>
+        {{ tituloPagina }} 
+    </h2>
+    <br/>
+    <div class="box-body">
+        <form [formGroup]="frmRequerimento" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+                <label for="boleto" class="control-label col-sm-2">Boleto:
+                    <!-- <span style="color:red;">&nbsp;*</span> -->
+                </label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="boleto" formControlName="boleto">
+                    <!-- <div style="color:red;padding:2px;margin-top:2px;">
+                        Campo obrigatório.
+                    </div> -->
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="instrumento" class="control-label col-sm-2">Instrumento:
+                    <!-- <span style="color:red;">&nbsp;*</span> -->
+                </label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="instrumento" formControlName="instrumento">
+                </div>
+            </div>
+
+            <hr/>
+
+            <button type="button" class="btn btn-secondary" 
+            routerLink="/requerimento/dados-requerente">Próximo</button>
+
+        </form>
+    </div>
+</div>

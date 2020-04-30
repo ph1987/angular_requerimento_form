@@ -1,0 +1,340 @@
+<div class="content principal">
+    <br/>
+    <h2>
+        {{ tituloPagina }} 
+    </h2>
+    <br/>
+    <div class="box-body">
+        <form [formGroup]="frmRequerimento" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+                <label for="cep" class="control-label col-sm-2">CEP:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" maxlength="9" id="cep" formControlName="cep">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="logradouro" class="control-label col-sm-2">Logradouro:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" maxlength="80" id="logradouro" formControlName="logradouro">
+                </div>
+
+                <label for="numero" class="control-label col-sm-1">Número:<span style="color:red;">&nbsp;*</span></label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" maxlength="20" id="numero" formControlName="numero">
+                </div>
+
+                <label for="complemento" class="control-label col-sm-2">Complemento:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" maxlength="20" id="complemento" formControlName="complemento">
+                </div>
+
+                
+            </div>
+
+            
+            <div class="form-group row">
+                <label for="bairro" class="control-label col-sm-2">Bairro:<span style="color:red;">&nbsp;*</span></label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="bairro" maxlength="50" formControlName="bairro">
+                </div>
+
+                <label for="municipio" class="control-label col-sm-1"><span style="font-size:14px;">Município:</span><span style="color:red;">&nbsp;*</span></label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="municipio" maxlength="30" formControlName="municipio">
+                </div>
+
+                <label for="uf" class="control-label col-sm-1">UF:</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="uf" maxlength="2" formControlName="uf">
+                </div>       
+            </div>
+
+            <div class="form-group row">
+                <label for="situacaoimovel" class="control-label col-sm-2">Situação do Imóvel:
+                </label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="situacaoimovel" formControlName="situacaoimovel">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+
+                <label for="imovelrural" class="control-label col-sm-2">Imóvel rural:
+                    
+                </label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="imovelrural" formControlName="imovelrural">
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                
+                <label for="municipio" class="control-label col-sm-2">Abrangência da Atividade:
+                </label>
+                <div class="col-sm-2">
+
+                    <button type="button" data-toggle="modal" 
+                    data-target="#modalMunicipio" class="btn btn-primary">
+                    Incluir Município
+
+                    <span class="paddNumero">
+                        {{arrMunicipios.length}}
+                    </span>
+
+                    </button>
+                </div>
+
+                <label for="telefone" class="control-label col-sm-1">Telefone:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-2">
+
+                    <button type="button" data-toggle="modal" 
+                    data-target="#modalTelefone" class="btn btn-primary">
+                    Incluir Telefone
+
+                    <span class="paddNumero">
+                        {{arrTelefones.length}}
+                    </span>
+
+                    </button>
+                </div>
+
+                <label for="telefone" class="control-label col-sm-1">E-mail:
+                    <span style="color:red;">&nbsp;*</span>
+                </label>
+                <div class="col-sm-2">
+
+                    <button type="button" data-toggle="modal" 
+                    data-target="#modalEmail" class="btn btn-primary">
+                    Incluir E-mail
+
+                    <span class="paddNumero">
+                        {{arrEmails.length}}
+                    </span>
+
+                    </button>
+                </div>
+            </div>
+
+            <hr>
+
+            <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/endereco-sede">Anterior</button>
+            <button type="submit" class="btn btn-primary botoesNav">{{btnLabel}}</button>
+            <button type="button" class="btn btn-secondary botoesNav" routerLink="/requerimento/endereco-correspondencia">Próximo</button>
+
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalMunicipio" tabindex="-1" role="dialog" aria-labelledby="modalMunicipio" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Incluir Município</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="frmMunicipio" (ngSubmit)="onSubmitMunicipio()">
+            <div class="modal-body"> 
+                <div class="form-group row">
+                    <label for="municipio" class="control-label col-sm-3">Município:
+                        <span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="municipio" formControlName="municipio">
+                            <option value='' selected='selected'>Selecione</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        </select>
+                    </div>
+                </div>    
+                
+                <div class="form-group row">
+                    <label for="municipiosTodos" class="control-label col-sm-11">
+                        <input type="checkbox" id="municipiosTodos" formControlName="municipioTodos">&nbsp;Adicionar todos os municípios
+                    </label>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success ">Adicionar</button>
+                </div>
+
+                <table class="table table-striped" *ngIf="arrMunicipios.length > 0">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Município</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arrMunicipios; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.municipio}}</td>
+                            <td><button type="button" (click)="excluirMunicipio(i)" class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </form>        
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Incluir telefone</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="frmTelefone" (ngSubmit)="onSubmitTelefone()">
+            <div class="modal-body"> 
+                <div class="form-group row">
+                    <label for="tipo" class="control-label col-sm-2">Tipo:
+                        <span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="tipo" formControlName="tipo">
+                            <option value='' selected='selected'>Selecione</option>
+                            <option value="Celular Comercial">Celular Comercial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        DDD:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="ddd" maxlength="2" formControlName="ddd">
+                    </div>
+                    <label for="ddd" class="control-label col-sm-2">
+                        Número:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="numero" maxlength="20" formControlName="numero">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        Ramal:
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ramal" maxlength="20" formControlName="ramal">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success ">Adicionar</button>
+                </div>
+
+                <table class="table table-striped" *ngIf="arrTelefones.length > 0">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">DDD + Número</th>
+                        <th scope="col">Ramal</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arrTelefones; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.tipo}}</td>
+                            <td>{{item.ddd}} {{item.numero}}</td>
+                            <td>{{item.ramal}}</td>
+                            <td><button type="button" (click)="excluirTelefone(i)" class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </form>        
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalEmail" tabindex="-1" role="dialog" aria-labelledby="modalEmail" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Incluir E-mail</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="frmEmail" (ngSubmit)="onSubmitEmail()">
+            <div class="modal-body"> 
+                <div class="form-group row">
+                    <label for="tipo" class="control-label col-sm-2">Tipo:
+                        <span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="tipo" formControlName="tipo">
+                            <option value='' selected='selected'>Selecione</option>
+                            <option value="E-mail pessoal">E-mail pessoal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ddd" class="control-label col-sm-2">
+                        E-mail:<span style="color:red;">&nbsp;*</span>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" maxlength="20" formControlName="email">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success ">Adicionar</button>
+                </div>
+
+                <table class="table table-striped" *ngIf="arrEmails.length > 0">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arrEmails; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.tipo}}</td>
+                            <td>{{item.email}}</td>
+                            <td><button type="button" (click)="excluirEmail(i)" class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </form>        
+      </div>
+    </div>
+</div>
