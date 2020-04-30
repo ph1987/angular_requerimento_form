@@ -26,7 +26,7 @@
     "fastclick": "^1.0.6",
     "icheck-bootstrap": "^3.0.1",
     "ionicons": "^5.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-ui": "^1.12.1",
     "jvectormap": "^2.0.4",
     "ngx-mask": "^8.1.7",
